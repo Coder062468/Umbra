@@ -149,6 +149,8 @@ body {
 // Fix for sidebar unfoldable toggle
 .sidebar.sidebar-narrow-unfoldable,
 .sidebar.sidebar-narrow {
+  width: var(--cui-sidebar-narrow-width, 56px) !important;
+
   .nav-link .nav-icon {
     margin-left: 0 !important;
   }
@@ -159,5 +161,14 @@ body {
 
   .sidebar-brand-narrow {
     display: inline !important;
+  }
+
+  .nav-link {
+    justify-content: center;
+  }
+
+  .nav-link-text,
+  .nav-group-toggle::after {
+    display: none !important;
   }
 }
