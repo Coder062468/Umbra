@@ -17,14 +17,19 @@ import { logo } from './../assets/brand/logo'
 import { sygnet } from './../assets/brand/sygnet'
 
 // sidebar nav config
-import navigation from '../_nav'
+import { getNavigation } from '../_nav'
 
 import type { State } from '../store'
+import { useAuth } from '../contexts/AuthContext'
 
 const AppSidebar = () => {
   const dispatch = useDispatch()
   const unfoldable = useSelector((state: State) => state.sidebarUnfoldable)
   const sidebarShow = useSelector((state: State) => state.sidebarShow)
+  const { user } = useAuth()
+
+  // Get navigation items filtered by user permissions
+  const navigation = getNavigation(user)
 
   return (
     <CSidebar

@@ -28,6 +28,7 @@ import {
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react-pro'
 import { Translation } from 'react-i18next'
+import type { User } from './types/api'
 
 export type Badge = {
   color: string
@@ -44,7 +45,7 @@ export type NavItem = {
   to?: string
 }
 
-const _nav: NavItem[] = [
+const allNavItems: NavItem[] = [
   {
     component: CNavItem,
     name: <Translation>{(t) => t('dashboard')}</Translation>,
@@ -625,4 +626,23 @@ const _nav: NavItem[] = [
   },
 ]
 
+// Function to get navigation items based on user permissions
+export const getNavigation = (user: User | null): NavItem[] => {
+  if (!user) {
+    return allNavItems
+  }
+
+  // Filter out System Admin section if user is not an admin
+  return allNavItems.filter((item) => {
+    // If it's the System Admin group
+    if (item.name === 'System Admin') {
+      return user.is_system_admin === true
+    }
+    // Include all other items
+    return true
+  })
+}
+
+// Export default for backwards compatibility
+const _nav = allNavItems
 export default _nav
