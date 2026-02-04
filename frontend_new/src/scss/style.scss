@@ -145,35 +145,3 @@ body {
     background-image: none !important; // stylelint-disable-line
   }
 }
-
-// Fix for sidebar unfoldable toggle - hide text elements in narrow mode
-.sidebar-narrow,
-.sidebar-narrow-unfoldable:not(:hover) {
-  .sidebar-brand-full {
-    display: none !important;
-  }
-
-  .sidebar-brand-narrow {
-    display: inline !important;
-  }
-
-  // Hide all direct text nodes and elements except icons in nav links
-  .nav-link,
-  .nav-group-toggle {
-    // Hide text nodes and all non-icon children
-    font-size: 0 !important;
-
-    .nav-icon {
-      font-size: 1rem !important; // Restore icon size
-    }
-
-    .badge {
-      display: none !important;
-    }
-  }
-
-  // Ensure nav group arrow is hidden
-  .nav-group-toggle::after {
-    display: none !important;
-  }
-}
