@@ -145,3 +145,19 @@ body {
     background-image: none !important; // stylelint-disable-line
   }
 }
+
+// Fix for sidebar unfoldable toggle
+.sidebar.sidebar-narrow-unfoldable,
+.sidebar.sidebar-narrow {
+  .nav-link .nav-icon {
+    margin-left: 0 !important;
+  }
+
+  .sidebar-brand-full {
+    display: none !important;
+  }
+
+  .sidebar-brand-narrow {
+    display: inline !important;
+  }
+}
