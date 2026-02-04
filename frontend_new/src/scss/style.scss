@@ -151,10 +151,6 @@ body {
 .sidebar.sidebar-narrow {
   width: var(--cui-sidebar-narrow-width, 56px) !important;
 
-  .nav-link .nav-icon {
-    margin-left: 0 !important;
-  }
-
   .sidebar-brand-full {
     display: none !important;
   }
@@ -165,10 +161,41 @@ body {
 
   .nav-link {
     justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+
+    .nav-icon {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    // Hide all text content except icons
+    > *:not(.nav-icon) {
+      display: none !important;
+    }
   }
 
-  .nav-link-text,
-  .nav-group-toggle::after {
+  .nav-group-toggle {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+
+    .nav-icon {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    // Hide text and arrow
+    > *:not(.nav-icon) {
+      display: none !important;
+    }
+
+    &::after {
+      display: none !important;
+    }
+  }
+
+  .nav-group-items {
     display: none !important;
   }
 }
