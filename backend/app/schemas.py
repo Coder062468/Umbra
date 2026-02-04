@@ -44,6 +44,7 @@ class UserLogin(UserBase):
 class UserResponse(UserBase):
     id: UUID
     created_at: datetime
+    is_system_admin: Optional[bool] = False
 
     class Config:
         from_attributes = True
