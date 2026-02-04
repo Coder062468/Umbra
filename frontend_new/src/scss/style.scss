@@ -146,11 +146,9 @@ body {
   }
 }
 
-// Fix for sidebar unfoldable toggle
-.sidebar.sidebar-narrow-unfoldable,
-.sidebar.sidebar-narrow {
-  width: var(--cui-sidebar-narrow-width, 56px) !important;
-
+// Fix for sidebar unfoldable toggle - hide text elements in narrow mode
+.sidebar-narrow,
+.sidebar-narrow-unfoldable:not(:hover) {
   .sidebar-brand-full {
     display: none !important;
   }
@@ -159,43 +157,23 @@ body {
     display: inline !important;
   }
 
-  .nav-link {
-    justify-content: center;
-    padding-left: 0;
-    padding-right: 0;
-
-    .nav-icon {
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-    }
-
-    // Hide all text content except icons
-    > *:not(.nav-icon) {
-      display: none !important;
-    }
-  }
-
+  // Hide all direct text nodes and elements except icons in nav links
+  .nav-link,
   .nav-group-toggle {
-    justify-content: center;
-    padding-left: 0;
-    padding-right: 0;
+    // Hide text nodes and all non-icon children
+    font-size: 0 !important;
 
     .nav-icon {
-      margin-left: 0 !important;
-      margin-right: 0 !important;
+      font-size: 1rem !important; // Restore icon size
     }
 
-    // Hide text and arrow
-    > *:not(.nav-icon) {
-      display: none !important;
-    }
-
-    &::after {
+    .badge {
       display: none !important;
     }
   }
 
-  .nav-group-items {
+  // Ensure nav group arrow is hidden
+  .nav-group-toggle::after {
     display: none !important;
   }
 }
